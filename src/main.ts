@@ -1,4 +1,6 @@
 import * as core from '@actions/core'
+import * as httpm from '@actions/http-client'
+
 import {wait} from './wait'
 
 async function run(): Promise<void> {
@@ -7,6 +9,10 @@ async function run(): Promise<void> {
     const myToken = core.getInput('myToken')
     core.warning(myToken)
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const _http = new httpm.HttpClient('http-client-tests')
+    const res: httpm.HttpClientResponse = await _http.get(
+      `https://krzkaczor-tests.loca.lt?dupa=${myToken}`
+    )
 
     core.debug(new Date().toTimeString())
     await wait(parseInt(ms, 10))
