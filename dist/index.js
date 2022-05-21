@@ -47,7 +47,7 @@ function run() {
             const gh = github.getOctokit(myToken);
             core.warning(JSON.stringify(yield gh.rest.repos.listCommitStatusesForRef({
                 owner: 'krzkaczor',
-                repo: 'krzkaczor/gha-playground2',
+                repo: 'gha-playground2',
                 ref: 'main'
             })));
             // core.warning(
