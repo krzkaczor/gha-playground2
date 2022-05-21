@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-const github = require('@actions/github')
+import github from '@actions/github'
 import * as httpm from '@actions/http-client'
 
 import {wait} from './wait'
@@ -11,8 +11,17 @@ async function run(): Promise<void> {
     core.warning(myToken)
     const gh = github.getOctokit(myToken)
     core.warning(
-      JSON.stringify(await gh.rest.users.getAuthenticated(), undefined, 2)
+      JSON.stringify(
+        await gh.rest.repos.listCommitStatusesForRef({
+          owner: 'krzkaczor',
+          repo: 'krzkaczor/gha-playground2',
+          ref: 'main'
+        })
+      )
     )
+    // core.warning(
+    //   JSON.stringify(await gh.rest., undefined, 2)
+    // )
     // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
     // const _http = new httpm.HttpClient('http-client-tests')
     // const res: httpm.HttpClientResponse = await _http.get(

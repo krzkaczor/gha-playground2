@@ -34,9 +34,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
-const github = __nccwpck_require__(5438);
+const github_1 = __importDefault(__nccwpck_require__(5438));
 const wait_1 = __nccwpck_require__(5817);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -44,8 +47,15 @@ function run() {
             const ms = core.getInput('milliseconds');
             const myToken = core.getInput('myToken');
             core.warning(myToken);
-            const gh = github.getOctokit(myToken);
-            core.warning(JSON.stringify(yield gh.rest.users.getAuthenticated(), undefined, 2));
+            const gh = github_1.default.getOctokit(myToken);
+            core.warning(JSON.stringify(yield gh.rest.repos.listCommitStatusesForRef({
+                owner: 'krzkaczor',
+                repo: 'krzkaczor/gha-playground2',
+                ref: 'main'
+            })));
+            // core.warning(
+            //   JSON.stringify(await gh.rest., undefined, 2)
+            // )
             // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             // const _http = new httpm.HttpClient('http-client-tests')
             // const res: httpm.HttpClientResponse = await _http.get(
