@@ -14,7 +14,7 @@ async function run(): Promise<void> {
       JSON.stringify(
         await gh.rest.repos.listCommitStatusesForRef({
           owner: 'krzkaczor',
-          repo: 'gha-playground2',
+          repo: 'babel-plugin-tailcall-optimization',
           ref: 'main'
         })
       )

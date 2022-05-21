@@ -47,7 +47,7 @@ function run() {
             const gh = github.getOctokit(myToken);
             core.warning(JSON.stringify(yield gh.rest.repos.listCommitStatusesForRef({
                 owner: 'krzkaczor',
-                repo: 'gha-playground2',
+                repo: 'babel-plugin-tailcall-optimization',
                 ref: 'main'
             })));
             // core.warning(
