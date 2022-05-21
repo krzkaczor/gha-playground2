@@ -15,7 +15,7 @@ async function run(): Promise<void> {
         await gh.rest.repos.listCommitStatusesForRef({
           owner: 'krzkaczor',
           repo: 'babel-plugin-tailcall-optimization',
-          ref: 'main'
+          ref: 'master'
         })
       )
     )
