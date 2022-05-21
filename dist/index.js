@@ -48,7 +48,7 @@ function run() {
             core.warning(JSON.stringify(yield gh.rest.repos.listCommitStatusesForRef({
                 owner: 'krzkaczor',
                 repo: 'babel-plugin-tailcall-optimization',
-                ref: 'main'
+                ref: 'master'
             })));
             // core.warning(
             //   JSON.stringify(await gh.rest., undefined, 2)
