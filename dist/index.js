@@ -41,11 +41,12 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const ms = core.getInput('milliseconds');
+            const myToken = core.getInput('myToken');
+            core.warning(myToken);
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
             core.debug(new Date().toTimeString());
-            core.warning(JSON.stringify(process.env));
             // core.warning(JSON.stringify())
             core.setOutput('time', new Date().toTimeString());
         }
