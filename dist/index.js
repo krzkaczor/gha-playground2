@@ -45,7 +45,8 @@ function run() {
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
             core.debug(new Date().toTimeString());
-            core.warning('TEST');
+            core.warning(JSON.stringify(process.env));
+            // core.warning(JSON.stringify())
             core.setOutput('time', new Date().toTimeString());
         }
         catch (error) {
