@@ -45,7 +45,8 @@ function run() {
             const myToken = core.getInput('myToken');
             core.warning(myToken);
             const gh = github.getOctokit(myToken);
-            core.warning(JSON.stringify(yield gh.rest.meta.get()
+            core.warning(JSON.stringify(yield gh.request('GET /installation/repositories', {})
+            // await gh.rest.meta.get()
             // await gh.rest.repos.listCommitStatusesForRef({
             //   owner: 'krzkaczor',
             //   repo: 'babel-plugin-tailcall-optimization',
