@@ -12,11 +12,12 @@ async function run(): Promise<void> {
     const gh = github.getOctokit(myToken)
     core.warning(
       JSON.stringify(
-        await gh.rest.repos.listCommitStatusesForRef({
-          owner: 'krzkaczor',
-          repo: 'babel-plugin-tailcall-optimization',
-          ref: 'master'
-        })
+        await gh.rest.meta.get()
+        // await gh.rest.repos.listCommitStatusesForRef({
+        //   owner: 'krzkaczor',
+        //   repo: 'babel-plugin-tailcall-optimization',
+        //   ref: 'master'
+        // })
       )
     )
     // core.warning(

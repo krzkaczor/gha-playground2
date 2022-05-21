@@ -45,11 +45,13 @@ function run() {
             const myToken = core.getInput('myToken');
             core.warning(myToken);
             const gh = github.getOctokit(myToken);
-            core.warning(JSON.stringify(yield gh.rest.repos.listCommitStatusesForRef({
-                owner: 'krzkaczor',
-                repo: 'babel-plugin-tailcall-optimization',
-                ref: 'master'
-            })));
+            core.warning(JSON.stringify(yield gh.rest.meta.get()
+            // await gh.rest.repos.listCommitStatusesForRef({
+            //   owner: 'krzkaczor',
+            //   repo: 'babel-plugin-tailcall-optimization',
+            //   ref: 'master'
+            // })
+            ));
             // core.warning(
             //   JSON.stringify(await gh.rest., undefined, 2)
             // )
